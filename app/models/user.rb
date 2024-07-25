@@ -9,6 +9,7 @@
 #
 
 class User < ApplicationRecord
+  has_many :comments, foreign_key: "user_id"
   validates(:username, {
     :presence => true,
     :uniqueness => { :case_sensitive => false },

@@ -10,8 +10,13 @@
 #  venue_id   :integer
 #
 
-class Comment < ApplicationRecord
-  validates(:commenter, { :presence => true })
+#class Comment < ApplicationRecord
+ # validates(:commenter, { :presence => true })
+
+  class Comment < ApplicationRecord
+    belongs_to :commenter, class_name: "User", foreign_key: "user_id"
+    validates(:commenter, { :presence => true })
+  end
 
   def commenter
     my_id = self.id
@@ -22,4 +27,4 @@ class Comment < ApplicationRecord
     
     return the_user
   end
-end
+
